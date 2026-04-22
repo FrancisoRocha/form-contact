@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'Karla';
+    src: url('/fonts/static/Karla-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Karla';
+    src: url('/fonts/static/Karla-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@theme {
+    --color-background: hsl(148, 38%, 91%);
+    --bg-container: hsl(0, 0%, 100%);
+    --color-text: hsl(187, 24%, 22%);
+    --color-error: hsl(0, 66%, 54%);
+    --bg-button: hsl(169, 82%, 27%);
+    --bg-inputs-border: hsl(186, 15%, 59%);
+    --karla-bold: 'Karla', sans-serif;
+    --karla-regular: 'Karla', sans-serif;
+}
+
+@utility label-base {
+    font-family: var(--karla-regular);
+    font-weight: 400;
+    @apply text-text text-sm text-left;
+}
