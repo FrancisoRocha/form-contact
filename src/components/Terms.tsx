@@ -1,20 +1,19 @@
+import React from 'react';
 
-type TermsProps = {
+type TermsProps = React.InputHTMLAttributes<HTMLInputElement> & {
     id: string;
     label: string;
-    type: string;
-    required?: boolean;
+    hasError?: boolean;
 }
 
-export default function Terms({ id, label, type ,required } : TermsProps) {
+export default function Terms({ id, label, hasError, ...rest } : TermsProps) {
 
     return (
         <div className="flex items-center gap-2">
             <input
                 id={id}
-                type={type}
-                className="w-5 h-5 rounded border border-(--bg-inputs-border)"
-                required={required}
+                {...rest}
+                className={`w-5 h-5 rounded border ${hasError ? 'border-error' : 'border-(--bg-inputs-border)'}`}
             />
             <label
                 htmlFor={id}
@@ -25,5 +24,4 @@ export default function Terms({ id, label, type ,required } : TermsProps) {
             </label>
         </div>
     )
-
 }

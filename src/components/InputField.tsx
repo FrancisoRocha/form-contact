@@ -1,12 +1,11 @@
+import type React from "react"
 
-type InputFieldProps = {
-    id: string;
+type InputFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
     label: string;
-    type: string;
-    required?: boolean;
+    hasError?: boolean;
 }
 
-export default function InputField({ id, label, type, required } : InputFieldProps) {
+export default function InputField({ id, label, hasError, ...rest }: InputFieldProps) {
 
     return (
         <div className="flex flex-col gap-2">
@@ -18,11 +17,13 @@ export default function InputField({ id, label, type, required } : InputFieldPro
                 {label && <span className="text-text ml-1">*</span>}
             </label>
             <input
-                type={type}
                 id={id}
-                required={required}
-                className="w-full h-auto label-base py-3 px-6 border border-(--bg-inputs-border) hover:border-text rounded-lg
-                            focus-visible:outline-none"
+                {...rest}
+                className={`w-full h-auto label-base py-3 px-6 border rounded-lg focus-visible:outline-none
+                    ${hasError
+                        ? 'border-error'
+                        : 'border-(--bg-inputs-border) hover:border-text'
+                    }`}
             />
         </div>
     )
