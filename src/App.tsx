@@ -1,3 +1,4 @@
+import { Toaster } from "sonner"
 import Form from "./components/Form"
 
 
@@ -10,6 +11,9 @@ function App() {
                 Contact Us
             </h1>
             <Form />
+            <Toaster
+                position="top-right"
+            />
         </div>
     </div>
   )

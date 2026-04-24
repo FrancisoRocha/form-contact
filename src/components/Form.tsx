@@ -6,6 +6,8 @@ import RadiOption from "./RadiOption";
 import Terms from "./Terms";
 import Error from "./Error";
 import { useFormStore } from "../store/store";
+import { toast } from "sonner";
+import SuccessToast from "./SuccessToast";
 
 
 export default function Form() {
@@ -13,11 +15,19 @@ export default function Form() {
     // Acess the addContact function from the Zustand store to add new contact data
     const addContact = useFormStore((state) => state.addContact)
 
-    const { register, handleSubmit, formState: { errors } } = useForm<ContactFormData>()
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<ContactFormData>()
 
     // Handle form submission by calling the registerContact function with the form data
     const registerContact = (data: ContactFormData) => {
+
         addContact(data)
+
+        toast.custom(() => (
+            <SuccessToast />
+        ))
+
+        reset()
+
     }
 
     return (
@@ -129,7 +139,7 @@ export default function Form() {
             <button
                 className="w-full h-auto cursor-pointer rounded-lg flex items-center justify-center border-none
                 bg-(--bg-button) text-white label-base text-sm py-3 px-6 hover:bg-text
-                transition-all duration-300"
+                transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-(--bg-inputs-border)"
             >
                 Submit
             </button>

@@ -21,6 +21,8 @@
     --bg-inputs-border: hsl(186, 15%, 59%);
     --karla-bold: 'Karla', sans-serif;
     --karla-regular: 'Karla', sans-serif;
+    --bg-toast: hsl(187, 24%, 22%);
+    --toast-text: hsl(148, 38%, 91%);
 }
 
 @utility label-base {

@@ -13,7 +13,10 @@ export default function Terms({ id, label, hasError, ...rest } : TermsProps) {
             <input
                 id={id}
                 {...rest}
-                className={`w-5 h-5 rounded border ${hasError ? 'border-error' : 'border-(--bg-inputs-border)'}`}
+                className={`appearance-none w-5 h-5 rounded border cursor-pointer
+                   checked:bg-[url('/images/icon-checkbox-check.svg')] checked:bg-center checked:bg-no-repeat checked:border-0
+                   focus:outline-none focus:ring-2 focus:ring-(--bg-inputs-border)
+                   ${hasError ? 'border-error' : 'border-(--bg-inputs-border)'}`}
             />
             <label
                 htmlFor={id}
